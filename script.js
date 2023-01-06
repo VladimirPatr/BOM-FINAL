@@ -44,6 +44,10 @@ const {
     loadStyle,
 } = modulesForm;
 
+fetch('http://localhost:3000/api/goods/8749195479')
+.then(res=> res.json())
+.then(data=>console.log(data))
+
 
 // Универсальная функция занрузки и отправки данных с сервера с помощью Fetch
 const fetchRequest = async (URLmain, {
@@ -216,7 +220,7 @@ const showModal = async (err, data, categoryes) => {
     file.addEventListener('change', () => {
       if (file.files.length > 0) {
         const src = URL.createObjectURL(file.files[0]);
-
+        console.log(src)
         if (file.files[0].size>1000000){
           return
         }
@@ -268,8 +272,11 @@ const showModal = async (err, data, categoryes) => {
       modalForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const formData = new FormData(modalForm);
+        console.log('formdata', formData)
         const data = Object.fromEntries(formData);
+        console.log('data1', data)
         data.image = await toBase64(data.image);
+        console.log('data2', data)
        if (modalForm.title.value.length && modalForm.category.value.length && modalForm.unit.value.length && modalForm.count.value.length && modalForm.price.value.length && modalForm.description.value.length>=80) {
         
         if (newURL) {
@@ -283,7 +290,7 @@ const showModal = async (err, data, categoryes) => {
                 discount: data?.discount,
                 count: data.count, 
                 units: data.unit, 
-                image: data?.image,
+                image: data.image,
             },
             cb(err, data){  
              
