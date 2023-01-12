@@ -615,5 +615,8 @@ tfoot tr td:last-child{
 		flex-basis: 100%;
 		max-width: 100%;
 	}
+	.form__area {
+		height: 40px !important;
+	}
 }
  

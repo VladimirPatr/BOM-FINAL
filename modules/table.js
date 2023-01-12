@@ -126,7 +126,7 @@ const deleteTr = () => {
           }
       };
       calculationTotalPriceTable();
-  });
+    });
   };
 
   //Открытие картинки при нажатии на иконку 
